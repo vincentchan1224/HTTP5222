@@ -1,0 +1,43 @@
+doctype html
+html
+  head
+    title Delete Crypto
+    link(rel='stylesheet', href='/css/style.css')
+  body
+    nav
+      a(href='/') Home
+      a(href='/about') About Crypto
+      a(href='/list') List
+      a(href='/create') Add a Crypto
+    h1 Delete Crypto
+    h1 Are you sure you want to delete the following crypto?
+    .form-container
+      .crypto-details
+        .form-group
+          label Name:
+          span= crypto.name
+        .form-group
+          label Symbol:
+          span= crypto.symbol
+        .form-group
+          label Price:
+          span $#{crypto.price}
+        .form-group
+          label 24h Change:
+          span= crypto.change_24h + '%'
+        .form-group
+          label 24h Volume:
+          span= crypto.volume_24h
+        .form-group
+          label Market Cap:
+          span= crypto.market_cap
+        .form-group
+          label Description:
+          p= crypto.description
+        .form-group
+          label Icon URL:
+          img(src=crypto.icon_url, alt=crypto.name, class='crypto-icon')
+      form(action=`/delete/${crypto._id}`, method='POST', class='form-container')
+        .form-group
+          button(type='submit') Confirm Delete
+          button(type='button', onclick="window.location.href='/list'", class='cancel-button') Cancel

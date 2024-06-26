@@ -1,0 +1,39 @@
+doctype html
+html
+  head
+    title Create Product
+    link(rel='stylesheet', href='/css/style.css')
+  body
+    nav
+      a(href='/') Home
+      a(href='/about') About Crypto
+      a(href='/list') List
+      a(href='/create') Add a Crypto
+    h1 Create a New Product
+    form(action='/create', method='POST', class='form-container')
+      div.form-group
+        label(for='name') Name:
+        input(type='text', name='name', required)
+      div.form-group
+        label(for='symbol') Symbol:
+        input(type='text', name='symbol', required)
+      div.form-group
+        label(for='price') Price:
+        input(type='number', name='price', step='0.01', required)
+      div.form-group
+        label(for='change_24h') 24h Change:
+        input(type='number', name='change_24h', step='0.01', required)
+      div.form-group
+        label(for='volume_24h') 24h Volume:
+        input(type='number', name='volume_24h', required)
+      div.form-group
+        label(for='market_cap') Market Cap:
+        input(type='number', name='market_cap', required)
+      div.form-group
+        label(for='description') Description:
+        textarea(name='description', required)
+      div.form-group
+        label(for='icon_url') Icon URL:
+        textarea(name='icon_url', required)
+      div.form-group
+        button(type='submit') Submit

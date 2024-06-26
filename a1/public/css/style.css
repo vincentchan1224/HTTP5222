@@ -1,0 +1,141 @@
+body {
+  font-family: Arial, sans-serif;
+  background-color: #121212;
+  color: #ffffff;
+  margin: 0;
+  padding: 0;
+}
+
+nav {
+  background-color: #1a1a1a;
+  padding: 10px;
+  text-align: center;
+}
+
+nav a {
+  margin: 0 15px;
+  text-decoration: none;
+  color: white;
+}
+
+nav a:hover {
+  text-decoration: underline;
+}
+
+h1 {
+  text-align: center;
+  margin-top: 20px;
+}
+
+table {
+  width: 80%;
+  margin: 20px auto;
+  border-collapse: collapse;
+  background-color: #1a1a1a;
+}
+
+thead th {
+  background-color: #333;
+  padding: 10px;
+}
+
+tbody td {
+  padding: 10px;
+  border-bottom: 1px solid #333;
+}
+
+tbody tr:hover {
+  background-color: #333;
+}
+
+.crypto-icon {
+  width: 20px;
+  height: 20px;
+  margin-right: 10px;
+  vertical-align: middle;
+}
+
+.crypto-name {
+  vertical-align: middle;
+}
+
+.change.negative {
+  color: red;
+}
+
+.change.positive {
+  color: green;
+}
+
+td a {
+  color: #007BFF;
+  text-decoration: none;
+  margin-right: 10px;
+}
+
+td a:hover {
+  text-decoration: underline;
+}
+
+.form-container {
+  width: 80%;
+  margin: 20px auto;
+  background-color: #1a1a1a;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.form-group span, .form-group p {
+  display: block;
+  padding: 10px;
+  border: 1px solid #333;
+  border-radius: 5px;
+  background-color: #2a2a2a;
+  color: #ffffff;
+  text-align: center;
+}
+
+.form-group img.crypto-icon {
+  display: block;
+  margin: 10px auto;
+  max-width: 100px;
+  max-height: 100px;
+}
+
+.form-group button, .form-group .cancel-button {
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  text-decoration: none;
+}
+
+.form-group button {
+  background-color: #007BFF;
+  color: white;
+}
+
+.form-group button:hover {
+  background-color: #0056b3;
+}
+
+.cancel-button {
+  background-color: #ff4444;
+  color: white;
+  margin-left: 10px;
+  display: inline-block;
+}
+
+.cancel-button:hover {
+  background-color: #cc0000;
+}

@@ -1,0 +1,39 @@
+doctype html
+html
+  head
+    title Edit Crypto
+    link(rel='stylesheet', href='/css/style.css')
+  body
+    nav
+      a(href='/') Home
+      a(href='/about') About Crypto
+      a(href='/list') List
+      a(href='/create') Add a Crypto
+    h1 Edit Crypto
+    form(action=`/edit/${crypto._id}`, method='POST', class='form-container')
+      div.form-group
+        label(for='name') Name:
+        input(type='text', name='name', value=crypto.name, required)
+      div.form-group
+        label(for='symbol') Symbol:
+        input(type='text', name='symbol', value=crypto.symbol, required)
+      div.form-group
+        label(for='price') Price:
+        input(type='number', name='price', value=crypto.price, step='0.01', required)
+      div.form-group
+        label(for='change_24h') 24h Change (%):
+        input(type='number', name='change_24h', value=crypto.change_24h, step='0.01', required)
+      div.form-group
+        label(for='volume_24h') 24h Volume:
+        input(type='number', name='volume_24h', value=crypto.volume_24h, step='0.01', required)
+      div.form-group
+        label(for='market_cap') Market Cap:
+        input(type='number', name='market_cap', value=crypto.market_cap, step='0.01', required)
+      div.form-group
+        label(for='description') Description:
+        textarea(name='description', required)= crypto.description
+      div.form-group
+        label(for='icon_url') Icon URL:
+        textarea(name='icon_url', required)= crypto.icon_url
+      div.form-group
+        button(type='submit') Update

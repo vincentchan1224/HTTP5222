@@ -1,0 +1,40 @@
+doctype html
+html
+  head
+    title Lists
+    link(rel='stylesheet', href='/css/style.css')
+  body
+    nav
+      a(href='/') Home
+      a(href='/about') About Crypto
+      a(href='/list') List
+      a(href='/create') Add a Crypto
+    h1 Crypto Lists
+    table
+      thead
+        tr
+          th Name
+          th Symbol
+          th Price
+          th 24h Change
+          th 24h Volume
+          th Market Cap
+          th Actions
+      tbody
+        each crypto in list
+          tr
+            td
+              img(src=crypto.icon_url, alt=crypto.name, class='crypto-icon')
+              span.crypto-name= crypto.name
+            td $#{crypto.symbol}
+            td $#{crypto.price}
+            td
+              if crypto.change_24h < 0
+                span.change.negative= crypto.change_24h + '%'
+              else
+                span.change.positive= crypto.change_24h + '%'
+            td= crypto.volume_24h
+            td= crypto.market_cap
+            td
+              a(href=`/edit/${crypto._id}`) Edit
+              a(href=`/delete/${crypto._id}`) Delete
