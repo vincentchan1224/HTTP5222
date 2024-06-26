@@ -1,14 +1,6 @@
-doctype html
-html
-  head
-    title Create Product
-    link(rel='stylesheet', href='/css/style.css')
-  body
-    nav
-      a(href='/') Home
-      a(href='/about') About Crypto
-      a(href='/list') List
-      a(href='/create') Add a Crypto
+extends common/layout 
+
+block layout-content
     h1 Create a New Product
     form(action='/create', method='POST', class='form-container')
       div.form-group

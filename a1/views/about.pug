@@ -1,14 +1,6 @@
-doctype html
-html
-  head
-    title About Crypto
-    link(rel='stylesheet', href='/css/style.css')
-  nav
-    a(href='/') Home
-    a(href='/about') About Crypto
-    a(href='/list') List
-    a(href='/create') Add a Crypto
-  body
+extends common/layout 
+
+block layout-content 
     h1 About Crypto
     p Cryptocurrency is a digital or virtual currency that uses cryptography for security. It operates independently of central banks and governments. While Bitcoin is the most popular cryptocurrency, top cryptocurrencies by market cap include Ethereum, BNB, Litecoin, XRP, Dogecoin, among others.
     p The value of a cryptocurrency is determined by the interplay of supply and demand on leading digital currency exchanges. Several elements influence cryptocurrency’s prices, such as prevailing market sentiment, impactful news events, noteworthy announcements, and shifts in regulatory stances. Given these factors, the value of a cryptocurrency can fluctuate within brief timeframes, making it a highly volatile investment.
