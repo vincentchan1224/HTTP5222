@@ -1,83 +1,74 @@
 require("dotenv").config();
 const express = require("express");
-const mongoose = require("mongoose");
-const bodyParser = require("body-parser");
+const path = require("path");
+const {
+  connectDB,
+  getAllCryptos,
+  getCryptoById,
+  createCrypto,
+  updateCrypto,
+  deleteCrypto,
+} = require("./modules/crypto/db"); // Adjust the path if needed
 
+// Set up Express app
 const app = express();
+const port = process.env.PORT || 8888;
 
-const uri = process.env.MONGODB_URI;
-if (!uri) {
-  throw new Error("The URI is valid");
-}
+// Connect to MongoDB
+connectDB();
 
-mongoose.connect(uri);
-
+// Set view engine
 app.set("view engine", "pug");
 
-app.use(bodyParser.urlencoded({ extended: true }));
+// Post form fields :https://stackoverflow.com/questions/5710358/how-to-access-post-form-fields-in-express
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 app.use(express.static("public"));
 
-//Mongoose schema
-const listSchema = new mongoose.Schema({
-  name: String,
-  symbol: String,
-  price: Number,
-  change_24h: Number,
-  volume_24h: Number,
-  market_cap: Number,
-  description: String,
-  icon_url: String,
+// Routes
+app.get("/", (request, response) => {
+  response.render("index");
 });
 
-const Crypto = mongoose.model("List", listSchema);
-
-app.get("/", (req, res) => {
-  res.render("index");
+app.get("/about", (request, response) => {
+  response.render("about");
 });
 
-app.get("/about", (req, res) => {
-  res.render("about");
+app.get("/list", async (request, response) => {
+  const list = await getAllCryptos();
+  response.render("list", { list });
 });
 
-app.get("/list", async (req, res) => {
-  const list = await Crypto.find();
-  res.render("list", { list });
+app.get("/create", (request, response) => {
+  response.render("create");
 });
 
-app.get("/create", (req, res) => {
-  res.render("create");
+app.post("/create", async (request, response) => {
+  await createCrypto(request.body);
+  response.redirect("/list");
 });
 
-app.post("/create", async (req, res) => {
-  const newCrypto = new Crypto(req.body);
-  await newCrypto.save();
-  res.redirect("/list");
+app.get("/edit/:id", async (request, response) => {
+  const crypto = await getCryptoById(request.params.id);
+  response.render("edit", { crypto });
 });
 
-// Edit form
-app.get("/edit/:id", async (req, res) => {
-  const crypto = await Crypto.findById(req.params.id);
-  res.render("edit", { crypto });
+app.post("/edit/:id", async (request, response) => {
+  await updateCrypto(request.params.id, request.body);
+  response.redirect("/list");
 });
 
-// Handle the Edit form
-app.post("/edit/:id", async (req, res) => {
-  await Crypto.findByIdAndUpdate(req.params.id, req.body);
-  res.redirect("/list");
+app.get("/delete/:id", async (request, response) => {
+  const crypto = await getCryptoById(request.params.id);
+  response.render("delete", { crypto });
 });
 
-// Delete page
-app.get("/delete/:id", async (req, res) => {
-  const crypto = await Crypto.findById(req.params.id);
-  res.render("delete", { crypto });
+app.post("/delete/:id", async (request, response) => {
+  await deleteCrypto(request.params.id);
+  response.redirect("/list");
 });
 
-// Handle the Delete action
-app.post("/delete/:id", async (req, res) => {
-  await Crypto.findByIdAndDelete(req.params.id);
-  res.redirect("/list");
-});
-
-app.listen(3000, () => {
-  console.log("Server is running.");
+// Set up server listening
+app.listen(port, () => {
+  console.log(`Listening on http://localhost:${port}`);
 });
