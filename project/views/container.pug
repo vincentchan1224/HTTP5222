@@ -1,0 +1,47 @@
+.container
+  h2 Crypto LeaderBoard
+  .row
+    include top-market-cap.pug
+    include top-price.pug
+    include top-price-change.pug
+
+  .row
+    .col-md-12
+      h3 Top Cryptocurrencies
+      table.table
+        thead
+          tr
+            th Rank
+            th Name
+            th Market Cap
+            th Circulating Supply
+            th Price
+            th Price Change
+        tbody
+          each item, index in cryptos
+            tr
+              td= index + 1
+              td
+                img.crypto-icon(src=item.imagePath alt="Icon")
+                a(href=`./Details/${item.crypto_id}`)= item.crypto_name
+              td= item.market_cap.toLocaleString()
+              td= item.circulating_supply.toLocaleString()
+              td= `$${item.latestPrice.toFixed(2)}`
+              td= `${item.priceChange.toFixed(2)}%`
+.container
+  h2 Crypto News
+  form(method='get' action='/search')
+    label(for='SearchCryptoId') Search Symbol:
+    input(type='text' name='SearchCryptoSymbol' class='form-control' placeholder='Enter Crypto Symbol')
+    button.btn.btn-primary.mt-2(type='submit') Search
+
+  .row.mt-3
+    each news in newsList
+      .col-md-4
+        .card
+          .card-body
+            h5.card-title= news.topic
+            p.card-text= news.content
+            p.card-text= news.crypto_symbol
+            p.card-text
+              small.text-muted= news.created_at.toLocaleString()

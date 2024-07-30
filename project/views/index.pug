@@ -1,0 +1,113 @@
+doctype html
+html
+  head
+    title Index
+    style.
+      .container h2, .container h3 {
+          color: #333;
+          font-family: Arial, sans-serif;
+      }
+      .table {
+          margin-top: 20px;
+          font-family: Arial, sans-serif;
+      }
+      .table thead th {
+          background-color: #4CAF50;
+          color: white;
+      }
+      .table tbody td {
+          background-color: #f2f2f2;
+      }
+      img.crypto-icon {
+          height: 20px;
+          width: 20px;
+          vertical-align: middle;
+          margin-right: 5px;
+      }
+
+  body
+    .container
+      h2 Crypto LeaderBoard
+      .row
+        .col-md-4
+          h3 Top by Price
+          table.table
+            thead
+              tr
+                th Rank
+                th Name
+                th Price
+            tbody
+              - var rank = 0;
+              each item in cryptosSortedByPrice
+                - rank++
+                tr
+                  td= rank
+                  td
+                    img(src=`https://s2.coinmarketcap.com/static/img/coins/64x64/${item.id}.png`, alt="Icon", class="crypto-icon")
+                    a(href=`./Details/${item.id}`)= item.name
+                  td= item.quote.USD.price.toLocaleString('en-US')
+
+        .col-md-4
+          h3 Top by Market Cap
+          table.table
+            thead
+              tr
+                th Rank
+                th Name
+                th MarketCap
+            tbody
+              - rank = 0;
+              each item in cryptosSortedByMarketCap
+                - rank++
+                tr
+                  td= rank
+                  td
+                    img(src=`https://s2.coinmarketcap.com/static/img/coins/64x64/${item.id}.png`, alt="Icon", class="crypto-icon")
+                    a(href=`./Details/${item.id}`)= item.name
+                  td= item.quote.USD.market_cap.toLocaleString('en-US')
+
+        .col-md-4
+          h3 Top by Price Change
+          table.table
+            thead
+              tr
+                th Rank
+                th Name
+                th Price Change
+            tbody
+              - rank = 0;
+              each item in cryptosSortedByPriceChange
+                - rank++
+                tr
+                  td= rank
+                  td
+                    img(src=`https://s2.coinmarketcap.com/static/img/coins/64x64/${item.id}.png`, alt="Icon", class="crypto-icon")
+                    a(href=`./Details/${item.id}`)= item.name
+                  td= item.quote.USD.percent_change_24h.toFixed(2) + '%'
+
+      .row
+        .col-md-12
+          h3 Top Cryptocurrencies
+          table.table
+            thead
+              tr
+                th Rank
+                th Name
+                th Market Cap
+                th Circulating Supply
+                th Price
+                th Price Change
+            tbody
+              - rank = 0;
+              each item in allCryptoByMarketCap
+                - rank++
+                tr
+                  td= rank
+                  td
+                    img(src=`https://s2.coinmarketcap.com/static/img/coins/64x64/${item.id}.png`, alt="Icon", class="crypto-icon")
+                    a(href=`./Details/${item.id}`)= item.name
+                  td= item.quote.USD.market_cap.toLocaleString('en-US')
+                  td= item.circulating_supply.toLocaleString('en-US')
+                  td= `$${item.quote.USD.price.toFixed(2)}`
+                  td= item.quote.USD.percent_change_24h.toFixed(2) + '%'
