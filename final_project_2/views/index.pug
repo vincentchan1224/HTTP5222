@@ -1,0 +1,48 @@
+extends main
+
+include components/cryptoTable
+include components/NewsCard
+
+block content
+  div(style='display: flex; justify-content: space-around; margin-bottom: 20px;')
+    div.crypto-table-container
+      +cryptoTable(hot, 'Top Volume Cryptos')
+    div.crypto-table-container
+      +cryptoTable(newListings, 'Newest Listings')
+    div.crypto-table-container
+      +cryptoTable(topGainers, 'Top Gainers')
+  div.header-container
+    h3.title Top 10 Cryptocurrencies
+    a(href='/markets' class='button') View More
+  table(style='width: 100%; text-align: center;')
+    thead
+      tr
+        th Icon
+        th Symbol
+        th Name
+        th Price
+        th Change
+        th Change%
+        th Volume
+        th Market Cap
+    tbody
+      each coin in allCrypto.slice(0, 10)
+        tr
+          td
+            img(src=`https://s2.coinmarketcap.com/static/img/coins/64x64/${coin.id}.png` alt=coin.name )
+          td(style='font-size: 18px;')= coin.symbol
+          td(style='color: grey; font-size: 12px;')= coin.name
+          td= `$${coin.quote.USD.price.toFixed(2)}`
+          td= `$${(coin.quote.USD.percent_change_24h * coin.quote.USD.price * 0.01).toFixed(2)}`
+          td= `${coin.quote.USD.percent_change_24h.toFixed(2)}%`
+          td= `$${coin.quote.USD.volume_24h.toLocaleString()}`
+          td= `$${coin.quote.USD.market_cap.toLocaleString()}`
+
+  h2 Latest News
+  div(style='display: flex; justify-content: space-around; flex-wrap: wrap;')
+    each article in articles
+      +NewsCard(article)
+
+  form(action='/news' method='get' style='display: flex; justify-content: flex-end; padding: 10px;')
+    input(type='text' name='keyword' placeholder='Search news...')
+    button(type='submit') Search

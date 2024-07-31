@@ -1,0 +1,92 @@
+body, html {
+    font-family: Arial, sans-serif;
+    margin: 20;
+    padding: 0;
+    background-color: #242424;
+    color: white;
+  }
+  
+  header {
+    background-color: #242424; 
+    color: white;
+    padding: 10px 20px;
+    overflow: hidden;
+    
+  }
+  
+  nav a {
+    color: yellow;
+    padding: 0 10px;
+    text-decoration: none;
+    font-size: 16px;
+  }
+  
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #242424;
+  }
+  
+  th, td {
+    padding: 8px;
+    text-align: left;
+    border: none; 
+  }
+  
+  th {
+    background-color: #242424;
+    color: white;
+  }
+  
+  td {
+    color: white;
+  }
+  
+  img {
+    width: 32px; 
+    height: 32px;
+  }
+  
+
+  .symbol {
+    font-size: 18px; 
+  }
+  
+  .name {
+    color: grey; 
+    font-size: 12px;
+  }
+  
+  .price {
+    color: white; 
+  }
+  
+ 
+
+  .header-container {
+    display: flex;
+    align-items: center; 
+    justify-content: space-between; 
+    margin-left: 20px;
+  }
+
+  .crypto-table-container{ 
+    border: 5px solid rgb(117, 116, 116); 
+    border-radius: 10px; 
+    padding: 10px;
+}
+  
+  .title {
+    margin: 0; 
+    flex-grow: 1;
+  }
+  
+  .button {
+    background-color: yellow;
+    color: black;
+    text-decoration: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    white-space: nowrap; 
+  }
+  

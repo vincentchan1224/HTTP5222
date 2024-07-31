@@ -1,0 +1,20 @@
+mixin cryptoTable(coins, title)
+  div(style='width: 100%; overflow-x: auto;')
+    h3(style='text-align: left;')= title
+    table
+      thead
+        tr
+          th Icon
+          th(style='text-align: left;') Symbol
+          th Name
+          th Price
+          th Change
+      tbody
+        each coin in coins
+          tr
+            td
+              img(src=`https://s2.coinmarketcap.com/static/img/coins/64x64/${coin.id}.png` alt=coin.name)
+            td.symbol= coin.symbol
+            td.name= coin.name
+            td.price= `$${coin.quote.USD.price.toFixed(2)}`
+            td= `${coin.quote.USD.percent_change_24h.toFixed(2)}%`
