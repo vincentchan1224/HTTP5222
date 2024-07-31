@@ -6,7 +6,7 @@ body, html {
     color: white;
   }
   
-  header {
+header {
     background-color: #242424; 
     color: white;
     padding: 10px 20px;
@@ -14,79 +14,97 @@ body, html {
     
   }
   
-  nav a {
+nav a {
     color: yellow;
     padding: 0 10px;
     text-decoration: none;
-    font-size: 16px;
-  }
+    font-size: 24px;
+}
   
-  table {
+table {
     width: 100%;
     border-collapse: collapse;
     background-color: #242424;
-  }
+}
   
-  th, td {
+th, td {
     padding: 8px;
     text-align: left;
     border: none; 
-  }
+}
   
-  th {
+th {
     background-color: #242424;
     color: white;
-  }
+}
   
-  td {
+td {
     color: white;
-  }
+}
   
-  img {
+img {
     width: 32px; 
     height: 32px;
-  }
+}
   
 
-  .symbol {
+.symbol {
     font-size: 18px; 
-  }
+}
   
-  .name {
+.name {
     color: grey; 
     font-size: 12px;
-  }
+}
   
-  .price {
+.price {
     color: white; 
-  }
+}
   
  
 
-  .header-container {
+.header-container {
     display: flex;
     align-items: center; 
     justify-content: space-between; 
     margin-left: 20px;
-  }
+}
 
-  .crypto-table-container{ 
+.crypto-table-container{ 
     border: 5px solid rgb(117, 116, 116); 
     border-radius: 10px; 
     padding: 10px;
 }
   
-  .title {
+.title {
     margin: 0; 
     flex-grow: 1;
-  }
+}
   
-  .button {
+.button {
     background-color: yellow;
     color: black;
     text-decoration: none;
     padding: 10px 20px;
     border-radius: 5px;
     white-space: nowrap; 
-  }
+}
   
+.container{
+    margin: 20px;
+}
+
+.search-input {
+    border: 2px solid yellow; 
+    padding: 5px 10px;
+    background-color: #4d4d4d;
+    border-radius: 5px; 
+}
+
+.red-text {
+    color: red;
+}
+
+.green-text {
+    color: green;
+}

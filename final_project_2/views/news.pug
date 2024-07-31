@@ -4,8 +4,8 @@ block content
   h2 Latest News
   form(method="get" action="/news")
     label(for="keyword") Search:
-    input#keyword(type="text" name="keyword" placeholder="Search news..." value=keyword)
-    button(type="submit") Search
+        input#keyword(type="text" name="keyword" placeholder="Search news..." value=keyword)
+        button(class="button" type="submit") Search
 
   if articles.length > 0
     each article, index in articles
