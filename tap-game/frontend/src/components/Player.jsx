@@ -7,7 +7,11 @@ import '../styles/Player.css';
 const Player = ({ player, upgradeAtk }) => {
   const handleUpgradeAtk = () => {
     if (player.coin >= 100) {
-      upgradeAtk(player._id); 
+      upgradeAtk(player._id)
+        .catch(error => {
+          console.error('Error upgrading ATK:', error);
+          alert('Failed to upgrade ATK. Please try again.');
+        });
     } else {
       alert('Not enough coins to upgrade ATK.');
     }
@@ -24,15 +28,14 @@ const Player = ({ player, upgradeAtk }) => {
       <Card.Body>
       <Card.Title className="title">Player</Card.Title>
         <div className="player-status border p-3">
- 
           <Row>
-          <Col xs={6}><strong>Level:</strong> {player.level}</Col>
-          <Col xs={6}><strong>EXP:</strong> {player.exp}</Col>
-        </Row>
-        <Row>
-          <Col xs={6}><strong>ATK:</strong> {player.atk}</Col>
-          <Col xs={6}><strong>Coin:</strong> {player.coin}</Col>
-        </Row>
+            <Col xs={6}><strong>Level:</strong> {player.level}</Col>
+            <Col xs={6}><strong>EXP:</strong> {player.exp}</Col>
+          </Row>
+          <Row>
+            <Col xs={6}><strong>ATK:</strong> {player.atk}</Col>
+            <Col xs={6}><strong>Coin:</strong> {player.coin}</Col>
+          </Row>
         </div>
         <button className="btn btn-primary mt-3" onClick={handleUpgradeAtk}>
           Upgrade Atk (100 coins)

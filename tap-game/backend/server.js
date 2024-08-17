@@ -36,7 +36,7 @@ const monsterSchema = new mongoose.Schema({
   dropExp: {
     type: Number,
     default: function () {
-      return this.level * 250;
+      return this.level * 100;
     },
   },
   dropCoin: {
