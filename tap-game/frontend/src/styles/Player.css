@@ -1,15 +1,15 @@
 .player-status {
-  border: 2px solid #007bff; /* Blue border to match the button */
-  border-radius: 8px;         /* Rounded corners */
-  padding: 10px;              /* Add padding inside the border */
-  margin-top: 10px;           /* Add some margin above the status box */
+  border: 2px solid #007bff;
+  border-radius: 8px;        
+  padding: 10px;             
+  margin-top: 10px;          
 }
 
 .stat {
-  padding: 5px;               /* Add padding to each stat for better readability */
-  text-align: left;           /* Align text to the left within columns */
+  padding: 5px;               
+  text-align: left;           
 }
 
 .player-status strong {
-  color: #007bff;             /* Blue color for labels, ensuring visibility */
+  color: #007bff;            
 }

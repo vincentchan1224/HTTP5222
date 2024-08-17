@@ -16,26 +16,22 @@ const Monster = ({ player, updatePlayer }) => {
   }, [player.fighting]);
 
   const attackMonster = async () => {
-    let newHp = monster.hp - player.atk; // Use the latest atk value from player state
+    let newHp = monster.hp - player.atk; 
 
-    // Ensure HP does not drop below 0
     if (newHp < 0) newHp = 0;
 
     if (newHp === 0) {
-      // Update monster's status to dead (alive = false)
       await fetch(`http://localhost:5001/api/monster/${monster._id}`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ hp: newHp, alive: false }),
       });
 
-      // Player defeats the monster
       let newExp = player.exp + monster.dropExp;
       let newLevel = player.level;
       let newAtk = player.atk;
       let newCoin = player.coin + monster.dropCoin;
 
-      // Check if player should level up
       while (newExp >= 1000) {
         newExp -= 1000;
         newLevel += 1;
@@ -51,16 +47,14 @@ const Monster = ({ player, updatePlayer }) => {
           level: newLevel,
           atk: newAtk,
           coin: newCoin,
-          fighting: null, // Clear the fighting field after the monster dies
+          fighting: null,
         }),
       });
 
-      updatePlayer(); // Update player state in the parent component
-
-      // Refresh the page after the monster dies to fetch the latest data
-      window.location.reload(); // This will reload the entire page
+      updatePlayer(); 
+      window.location.reload(); 
     } else {
-      // Update monster's HP after the attack
+      
       const response = await fetch(`http://localhost:5001/api/monster/${monster._id}`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },

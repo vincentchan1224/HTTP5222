@@ -34,10 +34,10 @@ const FightingPage = () => {
       if (response.ok) {
         const updatedPlayer = await response.json();
         setPlayer(prev => ({ ...prev, atk: updatedPlayer.atk, coin: updatedPlayer.coin }));
-        // Preserve the monster state by only updating the player's relevant attributes
+
       } else {
         const errorData = await response.json();
-        alert(errorData.message); // Handle any errors from the server
+        alert(errorData.message); 
       }
     } catch (error) {
       console.error('Failed to upgrade ATK:', error);
@@ -72,7 +72,7 @@ const FightingPage = () => {
       if (levelUpOccurred) {
         alert(`Level up! You are now level ${updatedPlayer.level}. ATK increased by 5.`);
         
-        // Send the updated player data to the backend to save the changes
+       
         await fetch(`http://localhost:5001/api/player/${updatedPlayer._id}`, {
           method: 'PUT',
           headers: {

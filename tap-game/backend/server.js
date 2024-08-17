@@ -89,8 +89,8 @@ app.put("/api/player/:id", async (req, res) => {
 // Upgrade player's ATK
 app.patch("/api/player/:id/upgrade-atk", async (req, res) => {
   const { id } = req.params;
-  const upgradeCost = 100; // Cost to upgrade ATK
-  const atkIncrease = 5; // ATK increase per upgrade
+  const upgradeCost = 100;
+  const atkIncrease = Math.floor(Math.random() * 5) + 1;
 
   try {
     const player = await Player.findById(id);

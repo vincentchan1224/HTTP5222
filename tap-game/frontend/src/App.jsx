@@ -2,7 +2,7 @@ import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import HomePage from './components/HomePage';
 import PlayerStatusPage from './components/PlayerStatusPage';
-import FightingPage from './components/FightingPage'; // Make sure to create and import this component
+import FightingPage from './components/FightingPage'; 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css'; 
 

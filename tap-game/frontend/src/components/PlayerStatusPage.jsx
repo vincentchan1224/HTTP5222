@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import Player from './Player';  // Ensure correct path and name
+import Player from './Player';
 
 const PlayerStatusPage = () => {
   const { id } = useParams();

@@ -2,12 +2,12 @@ import React from 'react';
 import Card from 'react-bootstrap/Card';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-import '../styles/Player.css'; // Confirm the path matches your project structure
+import '../styles/Player.css'; 
 
 const Player = ({ player, upgradeAtk }) => {
   const handleUpgradeAtk = () => {
     if (player.coin >= 100) {
-      upgradeAtk(player._id); // Call the upgrade function passed as a prop
+      upgradeAtk(player._id); 
     } else {
       alert('Not enough coins to upgrade ATK.');
     }
