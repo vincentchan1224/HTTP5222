@@ -1,0 +1,20 @@
+.fighting-status {
+  border: px solid #fe4040;
+  border-radius: 8px;        
+  padding: 10px;             
+  margin-top: 10px;    
+  color:#fb0000;      
+}
+
+.stat {
+  padding: 5px;               
+  text-align: left;           
+}
+
+.fighting-status strong {
+  color: #ff0000;            
+}
+
+.title{
+  color: #ff0000;            
+}

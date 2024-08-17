@@ -53,7 +53,7 @@ const Monster = mongoose.model("Monster", monsterSchema);
 
 // Create a new player
 app.post("/api/player", async (req, res) => {
-  const images = ["player1.jpeg", "player2.jpeg", "player3.jpeg"];
+  const images = ["player1.png", "player2.png", "player3.png"];
   const randomImage = images[Math.floor(Math.random() * images.length)];
 
   const player = new Player({
@@ -119,7 +119,7 @@ app.post("/api/monster", async (req, res) => {
   const randomIndex = Math.floor(Math.random() * names.length);
   const monster = new Monster({
     name: names[randomIndex],
-    image: `${names[randomIndex]}.jpg`,
+    image: `${names[randomIndex]}.png`,
   });
 
   await monster.save();

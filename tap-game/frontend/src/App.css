@@ -11,9 +11,11 @@
   will-change: filter;
   transition: filter 300ms;
 }
+
 .logo:hover {
   filter: drop-shadow(0 0 2em #646cffaa);
 }
+
 .logo.react:hover {
   filter: drop-shadow(0 0 2em #61dafbaa);
 }
@@ -41,9 +43,20 @@
   color: #888;
 }
 
-.main-container {
-  width: 430px;              
-  margin: 0 auto;            
-  padding-top: 20px;         
-  box-shadow: 0 4px 8px rgba(0,0,0,0.1); 
+.app-container {
+  width: 430px;
+  background-image: url('../public/images/background.jpg');
+  background-size: cover; 
+  background-position: center; 
+  margin: 0 auto; 
+  padding-top: 20px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+body {
+  background-color: black; 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh; 
 }
